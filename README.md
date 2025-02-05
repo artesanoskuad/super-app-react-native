@@ -100,4 +100,5 @@ git commit -m "fix(login): soluciona problema de autenticación con Google" -m "
 🎯 **Siguiendo estas convenciones, mantenemos un historial claro, ordenado y automatizable para futuras versiones.**  
 💡 **Si tienes dudas o sugerencias, contribuye al proyecto o revisa la documentación oficial.**
 
-🚀 ¡Feliz desarrollo! 🔥
+🚀 **[¡Ahora puedes documentar fácilmente nuevas funcionalidades con GIFs en tus PRs!](docs/GIF_GUIDE.md)** 🎉
+
