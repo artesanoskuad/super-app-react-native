@@ -11,7 +11,7 @@ const path = require("path");
 
 const root = process.cwd();
 const oldDirs = ["app", "components", "hooks", "constants", "scripts"];
-const newDir = "app-example";
+const newDir = "sprint2";
 const newAppDir = "app";
 const newDirPath = path.join(root, newDir);
 
