@@ -102,3 +102,11 @@ git commit -m "fix(login): soluciona problema de autenticación con Google" -m "
 
 🚀 **[¡Ahora puedes documentar fácilmente nuevas funcionalidades con GIFs en tus PRs!](docs/GIF_GUIDE.md)** 🎉
 
+
+## 📌 Estrategia de Git
+
+📖 **Consulta el flujo de Git en [docs/GIT_FLOW.md](docs/GIT_FLOW.md).**  
+
+## 📌 Estrategia de Releases
+
+📖 **Consulta la estrategia de releases en [docs/RELEASE_STRATEGY.md](docs/RELEASE_STRATEGY.md).**  
