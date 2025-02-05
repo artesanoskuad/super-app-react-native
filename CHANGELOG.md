@@ -4,6 +4,14 @@ Todas las modificaciones notables de este proyecto se documentarán en este arch
 
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), y este proyecto sigue las [versiones semánticas](https://semver.org/lang/es/).
 
+## [0.3.0] - 2025-02-XX
+
+### 🚀 Añadido
+- Se implementó una **animación Lottie** en el **Splash Screen** en lugar del texto "Cargando...".
+- Se agregó la librería `lottie-react-native` para manejar animaciones en la pantalla de carga.
+- La animación se reproduce automáticamente y se repite en bucle hasta que finaliza el splash.
+- Luego de **5 segundos**, la animación desaparece y la app redirige a la pantalla de pestañas (`/tabs`).
+
 ## [0.2.0] - 2025-02-XX
 
 ### 🚀 Añadido
