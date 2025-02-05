@@ -1,50 +1,103 @@
-# Welcome to your Expo app 👋
+# Proyecto XYZ
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-## Get started
+## 📌 Versionado Semántico
 
-1. Install dependencies
+Este proyecto sigue el estándar de **Versionado Semántico** ([SemVer](https://semver.org/lang/es/)) para gestionar las versiones del software.  
 
-   ```bash
-   npm install
-   ```
+El esquema de versionado es:
 
-2. Start the app
+- **MAJOR (`X.0.0`)**: Se incrementa cuando se realizan **cambios incompatibles** en la API.
+- **MINOR (`0.Y.0`)**: Se incrementa cuando se añaden **nuevas funcionalidades** de manera retrocompatible.
+- **PATCH (`0.0.Z`)**: Se incrementa cuando se realizan **correcciones de errores** de manera retrocompatible.
 
-   ```bash
-    npx expo start
-   ```
+📌 **Ejemplo de versiones:**
+- `2.1.3` → Mayor `2`, menor `1`, parche `3`.
+- `1.4.0` → Se agregó una nueva funcionalidad de forma compatible.
+- `3.0.0` → Se hicieron cambios incompatibles con versiones anteriores.
 
-In the output, you'll find options to open the app in a
+Para más información, visita la documentación oficial de [SemVer](https://semver.org/lang/es/).
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📌 Formato de Commits
 
-## Get a fresh project
+Seguimos la convención de **[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)** para los mensajes de commit. Esto garantiza un historial de cambios claro y estructurado.
 
-When you're ready, run:
+### **📜 Formato de Commit**
+```
+<tipo>(<ámbito opcional>): <descripción>
 
-```bash
-npm run reset-project
+[cuerpo opcional]
+
+[pie de página opcional]
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### **🔹 Tipos de Commits**
+| Tipo    | Descripción |
+|---------|------------|
+| `feat`  | 🚀 Nueva funcionalidad |
+| `fix`   | 🐛 Corrección de errores |
+| `docs`  | 📖 Cambios en la documentación |
+| `style` | 🎨 Cambios de formato o estilo (sin afectar la lógica) |
+| `refactor` | 🔧 Refactorización sin cambios en la funcionalidad |
+| `perf`  | ⚡ Mejora de rendimiento |
+| `test`  | 🧪 Adición o modificación de pruebas |
+| `chore` | 🔄 Actualización de herramientas o configuración |
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+### **📌 Ejemplos de Commits Correctos**
+#### ✅ Nueva Funcionalidad
+```
+feat(autenticación): añade soporte para OAuth2
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+#### ✅ Corrección de Error
+```
+fix(carrito): corrige error al actualizar cantidad de productos
+```
 
-## Join the community
+#### ✅ Documentación
+```
+docs(README): actualiza instrucciones de instalación
+```
 
-Join our community of developers creating universal apps.
+#### ✅ Cambio que rompe compatibilidad
+```
+feat(api)!: elimina el endpoint obsoleto /api/v1/usuarios
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+BREAKING CHANGE: Se ha eliminado el endpoint /api/v1/usuarios. Utilice /api/v2/usuarios en su lugar.
+```
+
+Para más detalles sobre este estándar, revisa [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+---
+
+## 📌 Cómo Hacer un Commit Correcto
+Ejemplo de uso en terminal:
+```sh
+git commit -m "feat(perfil): añade opción para subir foto de perfil"
+```
+
+Si necesitas incluir un cuerpo de mensaje más detallado:
+```sh
+git commit -m "fix(login): soluciona problema de autenticación con Google" -m "El error ocurría cuando el usuario ingresaba credenciales incorrectas. Se añadió manejo de errores."
+```
+
+---
+
+## 📌 Flujo de Versionado y Commits en el Proyecto
+1. 🛠️ **Desarrollar una nueva funcionalidad o corrección.**
+2. ✅ **Hacer commits siguiendo el estándar de Conventional Commits.**
+3. 📌 **Actualizar `CHANGELOG.md` con los cambios realizados.**
+4. 🔖 **Actualizar la versión en `package.json` siguiendo SemVer.**
+5. 🚀 **Subir los cambios y abrir un Pull Request.**
+
+---
+
+🎯 **Siguiendo estas convenciones, mantenemos un historial claro, ordenado y automatizable para futuras versiones.**  
+💡 **Si tienes dudas o sugerencias, contribuye al proyecto o revisa la documentación oficial.**
+
+🚀 ¡Feliz desarrollo! 🔥
