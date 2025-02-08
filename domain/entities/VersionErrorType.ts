@@ -1,0 +1,5 @@
+export enum VersionErrorType {
+    NO_INTERNET = 'NO_INTERNET',
+    SERVER_ERROR = 'SERVER_ERROR',
+    FORMAT_VERSION_ERROR = 'FORMAT_VERSION_ERROR'
+}
