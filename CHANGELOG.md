@@ -4,7 +4,14 @@ Todas las modificaciones notables de este proyecto se documentarán en este arch
 
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), y este proyecto sigue las [versiones semánticas](https://semver.org/lang/es/).
 
-## [0.3.0] - 2025-02-XX
+## [0.4.0] - 2025-02-XX
+
+### 🚀 Añadido
+- Se integró la carga de datos de ciudades desde una **API web**, reemplazando la fuente estática.
+- Se actualizó la lógica de obtención de datos utilizando un servicio y un hook personalizado en TypeScript.
+- Se incorporó un campo de búsqueda (TextInput) en la pantalla de **Ciudades** para filtrar la lista de ciudades según el nombre ingresado.
+
+## [0.3.0] - 2025-02-10
 
 ### 🚀 Añadido
 - Se implementó una **animación Lottie** en el **Splash Screen** en lugar del texto "Cargando...".
