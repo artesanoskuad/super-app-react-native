@@ -52,6 +52,23 @@ describe('GetVersionInfo', () => {
         const result = await getVersionInfo.execute();
     
         expect(result).toEqual(new VersionInfo('', '', VersionErrorType.FORMAT_VERSION_ERROR));
-    });    
+    }); 
+
+    test("Debe retornar SERVER_ERROR si ocurre un error inesperado", async () => {
+        jest.spyOn(installedRepo, "getInstalledVersion").mockResolvedValue("1.2.0");
+        jest.spyOn(remoteRepo, "getMinVersionSupported").mockRejectedValue(new Error("Error inesperado"));
+    
+        const result = await getVersionInfo.execute();
+        expect(result.error).toBe(VersionErrorType.SERVER_ERROR);
+    });
+
+    test("Debe manejar errores inesperados y devolver SERVER_ERROR", async () => {
+        jest.spyOn(installedRepo, "getInstalledVersion").mockRejectedValue(new Error("Unexpected Error"));
+        jest.spyOn(remoteRepo, "getMinVersionSupported").mockRejectedValue(new Error("Error inesperado"));
+    
+        const result = await getVersionInfo.execute();
+        expect(result.error).toBe(VersionErrorType.SERVER_ERROR);
+    });
+    
     
 });

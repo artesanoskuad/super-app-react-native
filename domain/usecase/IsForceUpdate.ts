@@ -11,8 +11,6 @@ export class IsForceUpdate {
             throw new Error(`Formato inválido [${minVersionSupported}]. Formato esperado [X.Y.Z]`);
         } 
 
-
-
         return this.requiresForceUpdate(installedVersion, minVersionSupported);
     }
 

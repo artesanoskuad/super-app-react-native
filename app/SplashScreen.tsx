@@ -6,8 +6,8 @@ import { GetVersionInfo } from "../domain/usecase/GetVersionInfo";
 import { IsForceUpdate } from "../domain/usecase/IsForceUpdate";
 import { InstalledVersionRepositoryHardcoded } from "./../data/repositories/InstalledVersionRepositoryHardcoded";
 import { RemoteVersionRepositoryHardcoded } from "./../data/repositories/RemoteVersionRepositoryHardcoded";
-import { NextScreenToSplash } from "../domain/entities/NextScreenToSplash";
 import { useRouter } from "expo-router";
+import { SplashStatus } from "../presentation/splash/SplashState";
 
 // 🔹 Configuración del caso de uso con datos hardcodeados por ahora
 const installedVersionRepo = new InstalledVersionRepositoryHardcoded();
@@ -22,19 +22,19 @@ const SplashScreen = () => {
 
   useEffect(() => {
     switch (state.status) {
-      case NextScreenToSplash.HOME:
+      case SplashStatus.HOME:
         router.replace("/tabs");
         break;
-      case NextScreenToSplash.FORCE_UPDATE:
+      case SplashStatus.FORCE_UPDATE:
         router.replace("/force-update");
         break;
-      case NextScreenToSplash.NO_INTERNET:
+      case SplashStatus.NO_INTERNET:
         router.replace("/no-internet");
         break;
-      case NextScreenToSplash.SERVER_ERROR:
+      case SplashStatus.SERVER_ERROR:
         router.replace("/server-error");
         break;
-      case NextScreenToSplash.FORMAT_VERSION_ERROR:
+      case SplashStatus.FORMAT_VERSION_ERROR:
         router.replace("/format-error");
         break;
     }

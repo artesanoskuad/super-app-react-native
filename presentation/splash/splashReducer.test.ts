@@ -104,4 +104,15 @@ describe("splashReducer", () => {
     expect(newState).toEqual(initialState);
   });
 
+  test("Debe retornar el estado actual si recibe una acción no definida", () => {
+    const initialState: SplashState = { status: SplashStatus.LOADING };
+
+    const newState = splashReducer(initialState, {
+        type: "ACTION_NO_EXISTE" as SplashActionType,
+    });
+
+    expect(newState).toEqual(initialState);
+  });
+
+
 });

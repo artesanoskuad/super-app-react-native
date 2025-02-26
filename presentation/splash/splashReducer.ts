@@ -26,6 +26,9 @@ export const splashReducer = (
             return { status: SplashStatus.SERVER_ERROR };
         case SplashActionType.SET_FORMAT_VERSION_ERROR:
             return { status: SplashStatus.FORMAT_VERSION_ERROR };
+        case SplashActionType.SET_UNKNOWN_ERROR:
+            return { status: SplashStatus.UNKNOWN_ERROR };
+                  
         default:
             return state;
     }

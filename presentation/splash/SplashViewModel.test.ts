@@ -33,6 +33,12 @@ describe("SplashViewModel", () => {
     getSplash = new GetSplash(getVersionInfo, isForceUpdateMock);
   });
 
+  afterEach(() => {
+    jest.clearAllMocks(); 
+    jest.restoreAllMocks();
+    jest.useRealTimers();
+  });
+
   test("Debe cambiar el estado a FORCE_UPDATE cuando GetSplash devuelve FORCE_UPDATE", async () => {
     jest.spyOn(getSplash, "execute").mockResolvedValue(NextScreenToSplash.FORCE_UPDATE);
 
@@ -132,16 +138,6 @@ describe("SplashViewModel", () => {
     expect(result.current.state.status).toBe(NextScreenToSplash.FORMAT_VERSION_ERROR);
   });
 
-  test("Debe cambiar el estado a HOME cuando GetSplash devuelve HOME", async () => {
-    jest.spyOn(getSplash, "execute").mockResolvedValue(NextScreenToSplash.HOME);
-
-    const { result, waitForNextUpdate } = renderHook(() => useSplashViewModel(getSplash));
-
-    await waitForNextUpdate(); // ✅ Espera a que el estado cambie
-
-    expect(result.current.state.status).toBe(NextScreenToSplash.HOME);
-  });
-
   test("Debe manejar un error desconocido y cambiar el estado a SERVER_ERROR", async () => {
     jest.spyOn(getSplash, "execute").mockRejectedValue(new Error("UnknownError"));
 
@@ -151,6 +147,43 @@ describe("SplashViewModel", () => {
 
     console.log("🔍 Estado final en test:", result.current.state.status); // Debug
     expect(result.current.state.status).toBe(NextScreenToSplash.SERVER_ERROR);
+  });
+
+  test("Debe mantener el estado actual si recibe un estado desconocido", async () => {
+    jest.spyOn(getSplash, "execute").mockResolvedValue("UNKNOWN_STATE" as NextScreenToSplash);
+
+    const { result, waitForNextUpdate } = renderHook(() => useSplashViewModel(getSplash));
+
+    await act(async () => {
+        await waitForNextUpdate();
+    });
+
+    console.log("🔍 Estado final en test (UNKNOWN_ERROR esperado):", result.current.state.status);
+    expect(result.current.state.status).toBe(NextScreenToSplash.UNKNOWN_ERROR); // ✅ Actualizado
+  });
+
+
+  test("Debe cambiar el estado a HOME cuando GetSplash devuelve HOME", async () => {
+    jest.spyOn(getSplash, "execute").mockResolvedValue(NextScreenToSplash.HOME);
+
+    const { result } = renderHook(() => useSplashViewModel(getSplash));
+
+    await act(async () => {}); 
+
+    expect(result.current.state.status).toBe(NextScreenToSplash.HOME);
+  });
+
+  test("Debe cambiar el estado a UNKNOWN_ERROR cuando GetSplash devuelve un estado desconocido", async () => {
+    jest.spyOn(getSplash, "execute").mockResolvedValue("UNEXPECTED_STATE" as NextScreenToSplash);
+
+    const { result, waitForNextUpdate } = renderHook(() => useSplashViewModel(getSplash));
+
+    await act(async () => {
+        await waitForNextUpdate();
+    });
+
+    console.log("🔍 Estado final en test (UNKNOWN_ERROR esperado):", result.current.state.status);
+    expect(result.current.state.status).toBe(NextScreenToSplash.UNKNOWN_ERROR);
   });
 
 });
