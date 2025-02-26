@@ -4,7 +4,16 @@ Todas las modificaciones notables de este proyecto se documentarán en este arch
 
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), y este proyecto sigue las [versiones semánticas](https://semver.org/lang/es/).
 
-## [0.4.0] - 2025-02-XX
+## [0.5.0] - 2025-02-XX
+
+### 🚀 Añadido
+- Se crearon las pantallas **Login** y **Registro** utilizando *react-hook-form* y *zod* para la validación de formularios.
+- Se configuró **Redux Toolkit** para la gestión de usuario, implementando acciones asíncronas de login y registro, y se integró **AsyncStorage** para persistir la sesión.
+- Se implementaron **rutas protegidas** mediante la lógica en el layout global de expo-router, redirigiendo a la pantalla de Login para usuarios no autenticados.
+- Se reorganizó la estructura de rutas de la aplicación utilizando grupos (por ejemplo, la carpeta `(auth)`) para no romper la navegación existente.
+
+
+## [0.4.0] - 2025-02-26
 
 ### 🚀 Añadido
 - Se integró la carga de datos de ciudades desde una **API web**, reemplazando la fuente estática.
