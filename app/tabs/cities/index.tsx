@@ -1,29 +1,49 @@
-import React from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, FlatList, StyleSheet, ActivityIndicator, Text, TextInput } from 'react-native';
 import CityCard from '../../../src/components/CityCard';
-
-const cities = [
-    { name: 'Paris', image: 'https://fastwaytours.com/wp-content/uploads/2023/10/paris-1-1536x864.jpg' },
-    { name: 'New York', image: 'https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_2048,g_auto/f_auto/q_auto/shutterstock_329662223_ss_non-editorial_3_csm8lw?_a=BAVARSAP0' },
-    { name: 'Puente Alto City', image: 'https://plazapuentealto.cl/wp-content/uploads/2009/05/mr.jpg' },
-    { name: 'Tokyo', image: 'https://www.civitatis.com/blog/wp-content/uploads/2022/11/calle-akihabara-tokio.jpg' }
-];
+import useCities from '../../../src/hooks/useCities';
+import { City } from '../../../src/api/citiesApi';
 
 export default function CitiesScreen() {
-    return (
-        <View style={styles.container}>
-            <FlatList
-                data={cities}
-                keyExtractor={(item) => item.name}
-                renderItem={({ item }) => <CityCard city={item} />}
-            />
-        </View>
-    );
+  const { cities, loading, error } = useCities();
+  const [searchText, setSearchText] = useState('');
+
+  if (loading) return <ActivityIndicator size="large" color="#0000ff" />;
+  if (error) return <Text>Error al cargar ciudades</Text>;
+
+  // Filtra las ciudades según el texto ingresado (sin distinguir mayúsculas/minúsculas)
+  const filteredCities = cities.filter(city =>
+    city.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.searchInput}
+        placeholder="Buscar ciudad..."
+        value={searchText}
+        onChangeText={setSearchText}
+      />
+      <FlatList<City>
+        data={filteredCities}
+        keyExtractor={(item) => item._id}
+        renderItem={({ item }) => <CityCard city={item} />}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-    },
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  searchInput: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 4,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
 });
