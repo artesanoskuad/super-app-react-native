@@ -102,6 +102,9 @@ git commit -m "fix(login): soluciona problema de autenticación con Google" -m "
 
 🚀 **[¡Ahora puedes documentar fácilmente nuevas funcionalidades con GIFs en tus PRs!](docs/GIF_GUIDE.md)** 🎉
 
+## 📌 Arquitrctura Táctica
+
+📖 **Consulta la arquitectura táctica en [docs/TACTICAL_ARCHITECTURE.md](docs/TACTICAL_ARCHITECTURE.md).** 
 
 ## 📌 Estrategia de Git
 
