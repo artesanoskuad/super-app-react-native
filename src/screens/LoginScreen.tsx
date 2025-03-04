@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { login } from '../store/userSlice';
 import { useRouter } from 'expo-router';
+import LottieView from 'lottie-react-native';
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Email inválido" }),
@@ -45,6 +46,18 @@ export default function LoginScreen() {
         name="email"
         render={({ field: { onChange, onBlur, value } }) => (
           <>
+            <LottieView
+                          source={require('../../assets/animations/briska.json')} // Asegúrate de que el archivo existe
+                          autoPlay
+                          loop
+                          style={styles.animation}
+                      />
+            <LottieView
+                          source={require('../../assets/animations/briskas.json')} // Asegúrate de que el archivo existe
+                          autoPlay
+                          loop
+                          style={styles.animation}
+                      />
             <Text>Email:</Text>
             <TextInput
               style={styles.input}
@@ -97,5 +110,9 @@ const styles = StyleSheet.create({
   input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 4, padding: 10, marginBottom: 10 },
   errorText: { color: 'red', marginBottom: 10 },
   link: { color: 'blue', marginTop: 20, textAlign: 'center' },
-  loader: { marginTop: 10 }
+  loader: { marginTop: 10 },
+  animation: {
+    width: 200,
+    height: 200,
+  },
 });
